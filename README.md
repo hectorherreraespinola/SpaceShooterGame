@@ -1,4 +1,4 @@
-# SpaceShooterGame# SpaceShooterGame
+# SpaceShooterGame
 
 ## Overview
 SpaceShooterGame is a 2D space shooter game developed using Unity and C#. Players control a spaceship and navigate through space, avoiding obstacles and enemies.
