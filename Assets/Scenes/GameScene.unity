@@ -344,6 +344,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &779842381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 779842383}
+  - component: {fileID: 779842382}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &779842382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779842381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: facb5f9ddd142ef4ba3055f79d1451db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1434321288327545842, guid: 7fa18f2391ddece4e9abc6c0e3f5b6cf, type: 3}
+  minInstantiateX: -5
+  maxInstantiateX: 7
+  enemyDestroyTime: 10
+--- !u!4 &779842383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779842381}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1347292066
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,8 +537,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  missilePrefab: {fileID: 0}
-  missileSpawnPoint: {fileID: 0}
+  missilePrefab: {fileID: 1946714302404443843, guid: 9c080b3e442cb65438eda8fe9550e085, type: 3}
+  missileSpawnPoint: {fileID: 1845725419}
+  destroyTime: 2
 --- !u!1 &1845725418
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,3 +578,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 438529729}
   - {fileID: 1347292068}
+  - {fileID: 779842383}
