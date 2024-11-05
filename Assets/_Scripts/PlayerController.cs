@@ -11,9 +11,17 @@ public class PlayerController : MonoBehaviour
     
     
     [Header("Missile Prefab")]
-    public GameObject missilePrefab;
-    public Transform missileSpawnPoint;
+    public GameObject missilePrefab1;
+    public GameObject missilePrefab2;
+    public Transform missileSpawnPoint1;
+    public Transform missileSpawnPoint2;
     public float destroyTime = 2.0f;
+    
+    
+    public Transform muzzleSpawnPoint1;
+    public Transform muzzleSpawnPoint2;
+    
+    
     
 
     public void Update()
@@ -37,9 +45,40 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-           GameObject gm= Instantiate(missilePrefab,missileSpawnPoint);
-           gm.transform.SetParent(null);
-           Destroy(gm,destroyTime);
+            InstantiateMissile(missilePrefab1, missileSpawnPoint1);
+            InstantiateMissile(missilePrefab2, missileSpawnPoint2);
+        }
+    }
+
+    void InstantiateMissile(GameObject missilePrefab, Transform missileSpawnPoint)
+        {
+            GameObject missile = Instantiate(missilePrefab, missileSpawnPoint.position, missileSpawnPoint.rotation);
+            missile.transform.SetParent(null);
+            Destroy(missile, destroyTime);
+            SpawnMuzzleFlash();
+        }
+    
+    void SpawnMuzzleFlash()
+    {
+        InstantiateAndDestroyMuzzleFlash(muzzleSpawnPoint1);
+        InstantiateAndDestroyMuzzleFlash(muzzleSpawnPoint2);
+    }
+
+    void InstantiateAndDestroyMuzzleFlash(Transform muzzleSpawnPoint)
+    {
+        GameObject muzzle = Instantiate(GameManager.instance.muzzleFlash, muzzleSpawnPoint);
+        muzzle.transform.SetParent(null);
+        Destroy(muzzle, destroyTime);
+    }
+    
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+            //Game OVer here
         }
     }
 }
