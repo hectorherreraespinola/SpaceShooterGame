@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy"  || collision.gameObject.tag == "Enemy2" || collision.gameObject.tag == "Enemy3")
         {
             Destroy(this.gameObject);
             //Game OVer here
