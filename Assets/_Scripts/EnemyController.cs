@@ -23,8 +23,8 @@ public class EnemyController : MonoBehaviour
         }
         else if (tag == "Enemy2")   
         {
-            float zigZag = Mathf.Sin(Time.time * zigZagFrequency) * zigZagMagnitude;
-            Vector3 movement = new Vector3(zigZag, enemySpeed*Time.deltaTime, 0);
+            float zigZag = Mathf.Sin(Time.time * zigZagFrequency) * zigZagMagnitude * Time.deltaTime;
+            Vector3 movement = new Vector3(zigZag, enemySpeed * Time.deltaTime, 0);
             transform.Translate(movement);
         }
         else if (tag == "Enemy3")

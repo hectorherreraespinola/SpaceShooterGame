@@ -23,6 +23,20 @@ public class MissileController : MonoBehaviour
    
    
   }
-  
+
+  else if (collision.gameObject.tag == "Enemy2")
+  {
+   GameObject gm = Instantiate(GameManager.instance.explosion, transform.position,transform.rotation);
+   Destroy(gm, 2.0f);
+   Destroy(collision.gameObject);
+   Destroy(gameObject);
+  }
+  else if (collision.gameObject.tag == "Enemy3")
+  {
+   GameObject gm = Instantiate(GameManager.instance.explosion, transform.position,transform.rotation);
+   Destroy(gm, 2.0f);
+   Destroy(collision.gameObject);
+   Destroy(gameObject);
+  }
  }
 }
