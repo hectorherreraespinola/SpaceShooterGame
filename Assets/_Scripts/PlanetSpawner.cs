@@ -9,7 +9,8 @@ public class PlanetSpawner : MonoBehaviour
     public float maxInstantiateX = 7f;
     public float instantiateY = 5.5f;
     public float spawnInterval = 20f;
-
+    
+    
     void Start()
     {
         InvokeRepeating("InstantiatePlanet", 0f, spawnInterval);
@@ -21,4 +22,7 @@ public class PlanetSpawner : MonoBehaviour
         int randomIndex = Random.Range(0, planets.Length);
         Instantiate(planets[randomIndex], planetPos, Quaternion.identity);
     }
+    
+    
+
 }
