@@ -1,42 +1,24 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MissileController : MonoBehaviour
 {
- public float missileSpeed = 30.0f;
- 
- void Update()
- {
-  transform.Translate(Vector3.up * missileSpeed * Time.deltaTime);
- }
+    public float missileSpeed = 30.0f;
 
- private void OnCollisionEnter2D(Collision2D collision)
- {
-  if (collision.gameObject.tag == "Enemy")
-  {
-   GameObject gm = Instantiate(GameManager.instance.explosion, transform.position,transform.rotation);
-   Destroy(gm, 2.0f);
-   Destroy(collision.gameObject);
-   Destroy(gameObject);
-   
-   
-  }
+    void Update()
+    {
+        transform.Translate(Vector3.up * missileSpeed * Time.deltaTime);
+    }
 
-  else if (collision.gameObject.tag == "Enemy2")
-  {
-   GameObject gm = Instantiate(GameManager.instance.explosion, transform.position,transform.rotation);
-   Destroy(gm, 2.0f);
-   Destroy(collision.gameObject);
-   Destroy(gameObject);
-  }
-  else if (collision.gameObject.tag == "Enemy3")
-  {
-   GameObject gm = Instantiate(GameManager.instance.explosion, transform.position,transform.rotation);
-   Destroy(gm, 2.0f);
-   Destroy(collision.gameObject);
-   Destroy(gameObject);
-  }
- }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!GameManager.IsEnemy(collision.gameObject)) return;
+
+        if (GameManager.instance != null && GameManager.instance.explosion != null)
+        {
+            GameObject fx = Instantiate(GameManager.instance.explosion, transform.position, transform.rotation);
+            Destroy(fx, 2.0f);
+        }
+        Destroy(collision.gameObject);
+        Destroy(gameObject);
+    }
 }
