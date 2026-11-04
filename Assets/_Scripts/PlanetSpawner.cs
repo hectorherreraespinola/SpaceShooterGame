@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlanetSpawner : MonoBehaviour
@@ -9,20 +7,21 @@ public class PlanetSpawner : MonoBehaviour
     public float maxInstantiateX = 7f;
     public float instantiateY = 5.5f;
     public float spawnInterval = 20f;
-    
-    
+    [Tooltip("Segundos antes de destruir un planeta (antes vivían para siempre).")]
+    public float planetLifetime = 30f;
+
     void Start()
     {
-        InvokeRepeating("InstantiatePlanet", 0f, spawnInterval);
+        InvokeRepeating(nameof(InstantiatePlanet), 0f, spawnInterval);
     }
 
     void InstantiatePlanet()
     {
+        if (planets == null || planets.Length == 0) return;
+
         Vector3 planetPos = new Vector3(Random.Range(minInstantiateX, maxInstantiateX), instantiateY);
         int randomIndex = Random.Range(0, planets.Length);
-        Instantiate(planets[randomIndex], planetPos, Quaternion.identity);
+        GameObject planet = Instantiate(planets[randomIndex], planetPos, Quaternion.identity);
+        Destroy(planet, planetLifetime);
     }
-    
-    
-
 }
